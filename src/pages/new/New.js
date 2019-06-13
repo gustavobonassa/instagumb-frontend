@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import api from '../services/api.js';
+import api from '../../services/api.js';
 
 import './New.css';
 
@@ -11,7 +11,7 @@ class New extends Component {
         description: '',
         hashtags: '',
     }
-    handleSubmit = async e =>{
+    handleSubmit = async e => {
         e.preventDefault();
 
         const data = new FormData();
@@ -33,10 +33,10 @@ class New extends Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    render(){
+    render() {
         return (
             <form id="new-post" onSubmit={this.handleSubmit}>
-                <input type="file" onChange={this.handleImageChange}/>
+                <input type="file" onChange={this.handleImageChange} />
                 <input
                     type="text"
                     name="author"
