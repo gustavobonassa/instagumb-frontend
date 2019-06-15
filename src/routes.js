@@ -19,13 +19,26 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
         }
     />
 );
+const AuthRoute = ({ component: Component, ...rest }) => (
+    <Route
+        {...rest}
+        render={props =>
+            !isAuthenticated() ? (
+                <Component {...props} />
+            ) : (
+                    <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+                )
+        }
+    />
+);
 
 const Routes = () => (
     <Switch>
         <PrivateRoute path="/" exact component={Feed} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
+        <AuthRoute path="/login" component={Login} />
+        <AuthRoute path="/register" component={Register} />
         <PrivateRoute path="/new" component={New} />
+        <Route path="*" component={() => <h1>Pagina nao encontrada</h1>} />
     </Switch>
 );
 export default Routes;

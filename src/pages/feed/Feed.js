@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import api from '../../services/api';
 import io from 'socket.io-client';
 import './Feed.css';
-
+import { logout } from "../../services/auth";
 
 import more from '../../assets/more.svg';
 import like from '../../assets/like.svg';
@@ -38,9 +38,14 @@ class Feed extends Component {
             });
         })
     }
+    handleLogout = () => {
+        logout();
+        this.props.history.push('/login');
+    }
     render() {
         return (
             <section id="post-list">
+                <button type="button" onClick={this.handleLogout}>Logout</button>
                 {this.state.feed.map(post => (
                     <article key={post._id}>
                         <header>
