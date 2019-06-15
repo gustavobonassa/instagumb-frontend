@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import api from '../../services/api.js';
-
+import jwt from 'jsonwebtoken';
+import { getToken } from '../../services/auth';
 import './New.css';
 
 class New extends Component {
     state = {
         image: null,
-        author: '',
         place: '',
         description: '',
         hashtags: '',
@@ -15,9 +15,9 @@ class New extends Component {
         e.preventDefault();
 
         const data = new FormData();
-
+        const token = jwt.decode(getToken())
+        console.log(token)
         data.append('image', this.state.image);
-        data.append('author', this.state.author);
         data.append('place', this.state.place);
         data.append('description', this.state.description);
         data.append('hashtags', this.state.hashtags);
@@ -37,13 +37,6 @@ class New extends Component {
         return (
             <form id="new-post" onSubmit={this.handleSubmit}>
                 <input type="file" onChange={this.handleImageChange} />
-                <input
-                    type="text"
-                    name="author"
-                    placeholder="Autor do post"
-                    onChange={this.handleChange}
-                    value={this.state.author}
-                />
                 <input
                     type="text"
                     name="place"

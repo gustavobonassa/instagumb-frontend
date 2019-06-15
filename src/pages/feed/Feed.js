@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
 import io from 'socket.io-client';
-
 import './Feed.css';
+
 
 import more from '../../assets/more.svg';
 import like from '../../assets/like.svg';
+import liked from '../../assets/like.svg';
 import comment from '../../assets/comment.svg';
 import send from '../../assets/send.svg';
 
@@ -20,11 +21,10 @@ class Feed extends Component {
         this.registerToSocket();
 
         const response = await api.get('posts');
-
-        this.setState({ feed: response.data });
+        this.setState({ feed: response.data.docs });
     }
     registerToSocket = () => {
-        const socket = io('https://instagumb-backend.herokuapp.com');
+        const socket = io('http://localhost:3333');
 
         socket.on('post', newPost => {
             this.setState({ feed: [newPost, ...this.state.feed] })
@@ -45,13 +45,13 @@ class Feed extends Component {
                     <article key={post._id}>
                         <header>
                             <div className="user-info">
-                                <span>{post.author}</span>
+                                <span>{post.author.name}</span>
                                 <span className="place">{post.place}</span>
                             </div>
                             <img src={more} alt="Mais" />
                         </header>
 
-                        <img src={`https://instagumb-backend.herokuapp.com/files/${post.image}`} alt="" />
+                        <img src={`http://localhost:3333/files/posts/${post.image}`} alt="" />
 
                         <footer>
                             <div className="actions">
