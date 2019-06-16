@@ -66,3 +66,16 @@ form#new-login a {
     margin-top: 10px;
     color: gray
 }
+.buttonLoad{
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 4px;
+    border: 0;
+    background: #596fc1;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
