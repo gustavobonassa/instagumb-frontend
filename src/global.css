@@ -10,3 +10,26 @@ body{
     font: 14pz Arial, Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased!important;
 }
+#menu-header{
+    border-bottom: 1px solid #DDD;
+    height: 50px;
+    max-width: 980px;
+    margin: auto;
+}
+#menu-header ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+#menu-header ul li {
+    display: inline-block;
+    width: 33%;
+}
+#menu-header ul li a {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+}

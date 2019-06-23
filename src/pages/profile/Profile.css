@@ -1,0 +1,83 @@
+section#component {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+section#component .header {
+    margin-top: 15px;
+    min-height: 180px;
+}
+.uniqpost img{
+    width: 32.5%;
+    height: 150px;
+    float: left;
+    margin: 1px;
+}
+section#component .header .image{
+    position: absolute;
+    width: 150px;
+    margin-top: 20px;
+    float: left;
+    
+}
+section#component .header .image img {
+    width: 130px;
+    height: 130px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid #737070;
+}
+section#component .header .side{
+    position: absolute;
+    word-wrap: break-word;
+    margin-top: 20px;
+    float: left;
+    margin-left: 170px;
+    padding: 20px;
+    width: 200px
+}
+section#component .header .side .name{
+    font-weight: bold;
+    font-size: 20px;
+}
+section#component .header .side .description{
+    margin-top: 20px;
+}
+#menu-profile{
+    border-bottom: 1px solid #DDD;
+    border-top: 1px solid #DDD;
+    padding-top: 5px; 
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#menu-profile ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+#menu-profile ul li {
+    display: inline-block;
+    width: 33%;
+}
+#menu-profile ul li a {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    text-decoration: none;
+}
+.number{
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    font-size: 19px;
+    float: left;
+}
+.sub{
+    width: 100%;
+    color: #6b6868;
+}

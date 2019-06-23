@@ -1,15 +1,11 @@
-header#main-header {
-    background: #fff;
-    height: 72px;
-    border-bottom: 1px solid #DDD;
-}
-
 header#main-header .header-content {
+    background: #fff;
     width: 100%;
     max-width: 980px;
     margin: 0 auto;
     height: 72px;
     padding: 0 30px;
+    border-bottom: 1px solid #DDD;
 
     display: flex;
     align-items: center;

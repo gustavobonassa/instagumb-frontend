@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import api from '../../services/api';
 import io from 'socket.io-client';
 import './Feed.css';
@@ -9,6 +9,9 @@ import like from '../../assets/like.svg';
 import liked from '../../assets/liked.svg';
 import comment from '../../assets/comment.svg';
 import send from '../../assets/send.svg';
+import feed from '../../assets/feed.svg';
+import profile from '../../assets/profile.svg';
+import message from '../../assets/message.svg';
 
 class Feed extends Component {
     state = {
@@ -76,40 +79,48 @@ class Feed extends Component {
     }
     render() {
         return (
-            <section id="post-list">
-                <button type="button" onClick={this.handleLogout}>Logout</button>
-                {this.state.feed.map(post => (
-                    <article key={post._id}>
-                        <header>
-                            <div className="user-info">
-                                <span>{post.author.name}</span>
-                                <span className="place">{post.place}</span>
-                            </div>
-                            <img src={more} alt="Mais" />
-                        </header>
+            <Fragment>
+                <div id="menu-header">
+                    <ul>
+                        <li><a href="/"><img src={feed} alt="" width="30px" /></a></li>
+                        <li><a href="/messages"><img src={message} alt="" width="30px" /></a></li>
+                        <li><a href="/profile"><img src={profile} alt="" width="30px" /></a></li>
+                    </ul>
+                </div>
+                <section id="post-list">
+                    {this.state.feed.map(post => (
+                        <article key={post._id}>
+                            <header>
+                                <div className="user-info">
+                                    <span>{post.author.name}</span>
+                                    <span className="place">{post.place}</span>
+                                </div>
+                                <img src={more} alt="Mais" />
+                            </header>
 
-                        <img src={`http://localhost:3333/files/posts/${post.image}`} alt="" />
+                            <img src={`https://instagumb-be.herokuapp.com/files/posts/${post.image}`} alt="" />
 
-                        <footer>
-                            <div className="actions">
-                                <button type="button" onClick={() => this.handleLike(post)}>
-                                    <img src={(post.liked) ? liked : like} alt="Likes" />
-                                </button>
-                                <img src={comment} alt="Comentários" />
-                                <img src={send} alt="Enviar" />
-                            </div>
-                            <strong>{post.likes} curtidas</strong>
-                            <p>
-                                {post.description}
-                                <span>{post.hashtags}</span>
-                            </p>
-                        </footer>
-                    </article>
-                ))}
-                <button type="button" className="buttonLoad" onClick={this.handleLoadMore}>
-                    Carregar mais
+                            <footer>
+                                <div className="actions">
+                                    <button type="button" onClick={() => this.handleLike(post)}>
+                                        <img src={(post.liked) ? liked : like} alt="Likes" />
+                                    </button>
+                                    <img src={comment} alt="Comentários" />
+                                    <img src={send} alt="Enviar" />
+                                </div>
+                                <strong>{post.likes} curtidas</strong>
+                                <p>
+                                    {post.description}
+                                    <span>{post.hashtags}</span>
+                                </p>
+                            </footer>
+                        </article>
+                    ))}
+                    <button type="button" className="buttonLoad" onClick={this.handleLoadMore}>
+                        Carregar mais
                 </button>
-            </section>
+                </section>
+            </Fragment>
         );
     }
 }

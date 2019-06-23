@@ -6,6 +6,8 @@ import Feed from './pages/feed/Feed';
 import New from './pages/new/New';
 import Login from './pages/user/Login';
 import Register from './pages/user/Register';
+import Profile from './pages/profile/Profile';
+import Messages from './pages/messages/Messages';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -38,6 +40,8 @@ const Routes = () => (
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/register" component={Register} />
         <PrivateRoute path="/new" component={New} />
+        <PrivateRoute path="/profile" component={Profile} />
+        <PrivateRoute path="/messages" component={Messages} />
         <Route path="*" component={() => <h1>Pagina nao encontrada</h1>} />
     </Switch>
 );

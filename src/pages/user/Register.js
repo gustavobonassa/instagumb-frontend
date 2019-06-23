@@ -73,7 +73,7 @@ class Login extends Component {
                     onChange={this.handleChange}
                     value={this.state.description}
                 />
-                <button type="submit">Entrar</button>
+                <button type="submit">Registrar-se</button>
                 <a href="/login">Já sou cadastrado</a>
             </form>
         );

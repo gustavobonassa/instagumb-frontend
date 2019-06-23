@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import api from '../../services/api.js';
-import jwt from 'jsonwebtoken';
-import { getToken } from '../../services/auth';
+import feed from '../../assets/feed.svg';
+import profile from '../../assets/profile.svg';
+import message from '../../assets/message.svg';
+//import jwt from 'jsonwebtoken';
+//import { getToken } from '../../services/auth';
 import './New.css';
 
 class New extends Component {
@@ -15,8 +18,7 @@ class New extends Component {
         e.preventDefault();
 
         const data = new FormData();
-        const token = jwt.decode(getToken())
-        console.log(token)
+        //const token = jwt.decode(getToken())
         data.append('image', this.state.image);
         data.append('place', this.state.place);
         data.append('description', this.state.description);
@@ -35,31 +37,40 @@ class New extends Component {
 
     render() {
         return (
-            <form id="new-post" onSubmit={this.handleSubmit}>
-                <input type="file" onChange={this.handleImageChange} />
-                <input
-                    type="text"
-                    name="place"
-                    placeholder="Local do post"
-                    onChange={this.handleChange}
-                    value={this.state.place}
-                />
-                <input
-                    type="text"
-                    name="description"
-                    placeholder="Descrição do post"
-                    onChange={this.handleChange}
-                    value={this.state.description}
-                />
-                <input
-                    type="text"
-                    name="hashtags"
-                    placeholder="Hashtags do post"
-                    onChange={this.handleChange}
-                    value={this.state.hashtags}
-                />
-                <button type="submit">Enviar</button>
-            </form>
+            <Fragment>
+                <div id="menu-header">
+                    <ul>
+                        <li><a href="/"><img src={feed} alt="" width="30px" /></a></li>
+                        <li><a href="/messages"><img src={message} alt="" width="30px" /></a></li>
+                        <li><a href="/profile"><img src={profile} alt="" width="30px" /></a></li>
+                    </ul>
+                </div>
+                <form id="new-post" onSubmit={this.handleSubmit}>
+                    <input type="file" onChange={this.handleImageChange} />
+                    <input
+                        type="text"
+                        name="place"
+                        placeholder="Local do post"
+                        onChange={this.handleChange}
+                        value={this.state.place}
+                    />
+                    <input
+                        type="text"
+                        name="description"
+                        placeholder="Descrição do post"
+                        onChange={this.handleChange}
+                        value={this.state.description}
+                    />
+                    <input
+                        type="text"
+                        name="hashtags"
+                        placeholder="Hashtags do post"
+                        onChange={this.handleChange}
+                        value={this.state.hashtags}
+                    />
+                    <button type="submit">Enviar</button>
+                </form>
+            </Fragment>
         );
     }
 }
